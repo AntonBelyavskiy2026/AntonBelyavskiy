@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Антон Белявский | Создаю инклюзивные миры</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a5bd7;
+            --primary-light: #4a7df8;
+            --secondary: #ff6b35;
+            --secondary-light: #ff8e5c;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo-frame {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            border: 2px dashed var(--primary);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Superpower Section */
+        .superpower {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .superpower-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .superpower-icon {
+            flex: 0 0 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .superpower-text {
+            flex: 1;
+        }
+
+        .superpower-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .skill-tag {
+            background-color: #eef1ff;
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .project-tag {
+            display: inline-block;
+            background-color: var(--secondary-light);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-excerpt {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-toggle {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .project-toggle:hover {
+            background-color: var(--primary-light);
+        }
+
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background-color: #f8f9ff;
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+
+        .project-details.active {
+            max-height: 500px;
+        }
+
+        .project-details-content {
+            padding: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .project-quote {
+            font-style: italic;
+            color: var(--dark);
+            padding: 15px;
+            background-color: white;
+            border-left: 4px solid var(--secondary);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 15px;
+        }
+
+        .quote-source {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-align: right;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .philosophy-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .philosophy-image {
+            flex: 1;
+        }
+
+        .philosophy-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .philosophy-text {
+            flex: 1;
+        }
+
+        .philosophy-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+
+        .philosophy-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .motto {
+            background-color: #f0f7ff;
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-top: 30px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .motto-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .motto-author {
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button.secondary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-logo span {
+            color: var(--secondary-light);
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--secondary-light);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content, .superpower-content, .philosophy-content {
+                flex-direction: column;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.3rem;
+            }
+            
+            .profile-photo {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .photo-frame {
+                width: 310px;
+                height: 310px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Антон<span>Белявский</span></a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#superpower">Компетенция</a></li>
+                    <li><a href="#projects">Проекты</a></li>
+                    <li><a href="#philosophy">Философия</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Превращаю сложные идеи в <span>простые победы</span></h1>
+                    <p>Я создаю инклюзивные образовательные системы, которые меняют жизни. От научной концепции — до работающего digital-продукта.</p>
+                    <a href="#projects" class="cta-button">Смотреть мои проекты</a>
+                </div>
+                <div class="hero-image">
+                    <div class="photo-frame"></div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Антон Белявский" class="profile-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Superpower Section -->
+    <section class="superpower" id="superpower">
+        <div class="container">
+            <div class="section-title">
+                <h2>Моя ключевая компетенция</h2>
+                <p>Системный архитектор образовательных решений</p>
+            </div>
+            <div class="superpower-content">
+                <div class="superpower-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="superpower-text">
+                    <h3>Создаю экосистемы для развития</h3>
+                    <p>Моя сила — в умении соединять несоединяемое: глубокую науку (нейропсихологию, педагогику) с человечными историями и современными технологиями. Я не просто пишу тексты или верстаю сайты. Я проектирую целые экосистемы для развития, где каждая деталь работает на главную цель: раскрыть потенциал человека.</p>
+                    <p>Мой подход — это фокус на <strong>«суперсилах»</strong>, а не на ограничениях.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Междисциплинарный синтез</span>
+                        <span class="skill-tag">Инклюзивный дизайн</span>
+                        <span class="skill-tag">Геймификация</span>
+                        <span class="skill-tag">Архитектура контента</span>
+                        <span class="skill-tag">Веб-разработка</span>
+                        <span class="skill-tag">UX/UI для особых аудиторий</span>
+                        <span class="skill-tag">Научная адаптация</span>
+                        <span class="skill-tag">Дорожные карты развития</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Проекты, которые говорят сами за себя</h2>
+                <p>Каждый проект — это целостная экосистема, меняющая подход к развитию и обучению</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Академия жизненных побед">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Академия жизненных побед</h3>
+                        <span class="project-tag">Образовательно-мотивационный комплекс</span>
+                        <p class="project-excerpt">Комплекс материалов для людей с синдромом Вильямса: веб-платформа, учебное пособие, инструменты развития самостоятельности.</p>
+                        <button class="project-toggle" data-project="project1">
+                            <span>Подробнее о проекте</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="project-details" id="project1">
+                        <div class="project-details-content">
+                            <div class="project-quote">
+                                "Выдающийся пример инклюзивного ресурса, сочетающий научную глубину и практическую применимость. Проект демонстрирует принципиально новый подход — переход от модели 'дефицита' к модели 'потенциала и суперсил'. Материал заслуживает высшей оценки (5/5)."
+                            </div>
+                            <p class="quote-source">Из рецензии независимого эксперта</p>
+                            <p><strong>Объём проекта:</strong> Комплекс из 6 взаимосвязанных веб-страниц + 200-страничное учебное пособие</p>
+                            <p><strong>Ключевая инновация:</strong> Уникальная 25-летняя "дорожная карта" развития и система "суперсил"</p>
+                            <p><strong>Технологии:</strong> HTML/CSS/JavaScript, инклюзивный UX/UI, интерактивные элементы</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Карта личных границ">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Карта личных границ</h3>
+                        <span class="project-tag">Интерактивный тренажер</span>
+                        <p class="project-excerpt">Онлайн-платформа для развития эмоционального интеллекта и навыков коммуникации у подростков и молодёжи.</p>
+                        <button class="project-toggle" data-project="project2">
+                            <span>Подробнее о проекте</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="project-details" id="project2">
+                        <div class="project-details-content">
+                            <div class="project-quote">
+                                "Инновационный формат, который превращает абстрактные понятия психологии в наглядные и практические шаги. Отличный пример геймификации soft skills, где теория становится личным опытом через интерактивные сценарии."
+                            </div>
+                            <p class="quote-source">Отзыв психолога-методиста</p>
+                            <p><strong>Целевая аудитория:</strong> Подростки 14-18 лет, студенты, молодые специалисты</p>
+                            <p><strong>Особенности:</strong> Интерактивные сценарии, персонализированные рекомендации, трекер прогресса</p>
+                            <p><strong>Результаты пилота:</strong> У 87% участников повысился уровень осознанности в коммуникации</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Экосистема Осознанный выбор">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Экосистема «Осознанный выбор»</h3>
+                        <span class="project-tag">Платформа профориентации</span>
+                        <p class="project-excerpt">Веб-платформа и рабочие тетради для профориентации, основанные на концепции сильных сторон и ценностей.</p>
+                        <button class="project-toggle" data-project="project3">
+                            <span>Подробнее о проекте</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="project-details" id="project3">
+                        <div class="project-details-content">
+                            <div class="project-quote">
+                                "Системный продукт, который не дает готовых ответов, а учит принимать решения. Сочетает аналитический инструментарий и мотивационную поддержку, помогая молодым людям находить свой путь, а не следовать шаблонам."
+                            </div>
+                            <p class="quote-source">Отзыв карьерного консультанта</p>
+                            <p><strong>Компоненты:</strong> Онлайн-платформа с тестами, 12 рабочих тетрадей, сопроводительные видеоуроки</p>
+                            <p><strong>Методология:</strong> Комбинация ценностно-ориентированного и сильного сторон подходов</p>
+                            <p><strong>Охват:</strong> Используется в 15 образовательных учреждениях региона</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+        <div class="container">
+            <div class="section-title">
+                <h2>Почему я этим занимаюсь?</h2>
+            </div>
+            <div class="philosophy-content">
+                <div class="philosophy-image">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Философия работы" class="philosophy-img">
+                </div>
+                <div class="philosophy-text">
+                    <h3>Миссия, а не просто работа</h3>
+                    <p>Я верю, что настоящая технология — та, которая делает человека сильнее. Особенно того, кого общество часто считает "слабым". Моя миссия — создавать инструменты, дающие не просто знания, а <strong>уверенность и опору</strong>.</p>
+                    <p>В основе каждого моего проекта лежит не техническое задание, а ценности: уважение к нейроразнообразию, вера в потенциал и фокус на возможностях.</p>
+                    <p>Я создаю не для галочки, а для реального изменения жизней. Каждый интерфейс, каждая строчка текста, каждый интерактивный элемент — это мост между возможностями человека и миром, который часто бывает к нему не адаптирован.</p>
+                    
+                    <div class="motto">
+                        <div class="motto-text">"От диагноза — к потенциалу. От ограничений — к возможностям. От теории — к практике, меняющей жизни."</div>
+                        <div class="motto-author">— Мой профессиональный девиз</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Готов создать проект, который имеет значение?</h2>
+            <p>Если у вас есть идея социального, образовательного или мотивационного продукта — давайте обсудим, как воплотить ее в жизнь. Создадим что-то важное вместе.</p>
+            <div class="cta-buttons">
+                <a href="https://t.me/yourusername" class="cta-button secondary" target="_blank">
+                    <i class="fab fa-telegram"></i> Написать в Telegram
+                </a>
+                <a href="resume.pdf" class="cta-button" download>
+                    <i class="fas fa-download"></i> Скачать резюме (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="#" class="footer-logo">Антон<span>Белявский</span></a>
+                    <p class="footer-tagline">Создаю инклюзивные миры. Проектирую образовательные системы.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h3>Контакты</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hello@beliavsky.ru</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (XXX) XXX-XX-XX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, Россия</span>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Антон Белявский. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Project details toggle
+        document.querySelectorAll('.project-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const projectId = button.getAttribute('data-project');
+                const details = document.getElementById(projectId);
+                const icon = button.querySelector('i');
+                
+                details.classList.toggle('active');
+                
+                if (details.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                    button.querySelector('span').textContent = 'Скрыть подробности';
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                    button.querySelector('span').textContent = 'Подробнее о проекте';
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements to animate
+        document.querySelectorAll('.superpower-content, .project-card, .philosophy-content').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
